@@ -1,3 +1,4 @@
+use anchor_lang::solana_program::entrypoint::ProgramResult;
 use anchor_lang::prelude::*;
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
@@ -12,10 +13,10 @@ pub mod mycalculatordapp {
     }
 }
 
-#derive(Accounts) 
-pub struct create<'info> {
+#[derive(Accounts)] 
+pub struct Create<'info> {
     #[account(init, payer=user, space=264)]
-    pub calculator: Account<'info, Calculator>
+    pub calculator: Account<'info, Calculator>,
     #[account(mut)]
     pub user: Signer<'info>,
     pub system_program: Program<'info, System>
